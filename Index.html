@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Civil Engineering — Undergraduate Programme | University of Birmingham</title>
+<style>
+  :root {
+    --clr-structures:#f4a5a5;--clr-structures-dark:#c0392b;--clr-structures-text:#5a1a1a;--clr-structures-bdr:#e08a8a;
+    --clr-fluids:#a0dce8;--clr-fluids-dark:#0097a7;--clr-fluids-text:#0d3b42;--clr-fluids-bdr:#7cc9d6;
+    --clr-geotech:#fcc89b;--clr-geotech-dark:#e67e22;--clr-geotech-text:#4a2800;--clr-geotech-bdr:#e8a96e;
+    --clr-design:#fce9a0;--clr-design-dark:#d4a017;--clr-design-text:#4a3c00;--clr-design-bdr:#e6d07a;
+    --clr-maths:#a5d6a7;--clr-maths-dark:#2e7d32;--clr-maths-text:#1b3e1d;--clr-maths-bdr:#7dbf80;
+    --clr-electrical:#a3c4f3;--clr-electrical-dark:#1565c0;--clr-electrical-text:#152d4f;--clr-electrical-bdr:#7aa3e0;
+    --clr-materials:#c5cae9;--clr-materials-dark:#5c6bc0;--clr-materials-text:#262b52;--clr-materials-bdr:#9fa4ce;
+    --clr-industrial:#f3b4c8;--clr-industrial-dark:#c2185b;--clr-industrial-text:#4a0b24;--clr-industrial-bdr:#de8ca6;
+    --clr-transport:#d1b3e8;--clr-transport-dark:#7b1fa2;--clr-transport-text:#33104a;--clr-transport-bdr:#b48fcd;
+    --clr-wind:#c9a3e0;--clr-wind-dark:#6a1b9a;--clr-wind-text:#2e0e45;--clr-wind-bdr:#ab82c5;
+    --clr-tunnel:#f1a3b8;--clr-tunnel-dark:#c62828;--clr-tunnel-text:#4a0b1e;--clr-tunnel-bdr:#db7f9a;
+    --clr-railway:#fcc89b;--clr-railway-dark:#bf360c;--clr-railway-text:#4a1a00;--clr-railway-bdr:#e8a96e;
+    --clr-climate:#a0d8c8;--clr-climate-dark:#00796b;--clr-climate-text:#0d3a32;--clr-climate-bdr:#72c0ac;
+    --clr-project:#b0bec5;--clr-project-dark:#455a64;--clr-project-text:#1c2a30;--clr-project-bdr:#90a4ae;
+    --clr-ai:#a0d4d8;--clr-ai-dark:#00838f;--clr-ai-text:#0d3b3e;--clr-ai-bdr:#72b8bd;
+    --clr-surveying:#d5dbe0;--clr-surveying-dark:#78909c;--clr-surveying-text:#3a4a52;--clr-surveying-bdr:#b0bec5;
+
+    --page-max:1320px;--radius:10px;--radius-sm:7px;
+    --shadow-card:0 1px 4px rgba(0,0,0,.06);--shadow-modal:0 12px 48px rgba(0,0,0,.22);
+    --transition:.28s cubic-bezier(.4,0,.2,1);
+    --ff:'Segoe UI',system-ui,-apple-system,sans-serif;
+    --bg:#f7f8fa;--bg-card:#fff;--text:#1e2330;--text-muted:#6b7280;--border:#e2e5ea;
+    --uob-blue:#003865;--uob-gold:#c1a05e;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--ff);background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased}
+
+  .site-header{background:var(--uob-blue);color:#fff;padding:2rem 1.5rem 1.8rem;text-align:center}
+  .site-header::after{content:'';display:block;height:4px;background:var(--uob-gold)}
+  .site-header h1{font-size:clamp(1.35rem,3.5vw,2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.3rem}
+  .site-header p{font-size:.92rem;opacity:.8}
+
+  .legend-bar{max-width:var(--page-max);margin:1.25rem auto .5rem;padding:0 1.25rem}
+  .legend-bar details{background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border)}
+  .legend-bar summary{padding:.65rem 1rem;cursor:pointer;font-weight:600;font-size:.84rem;color:var(--text-muted);list-style:none;display:flex;align-items:center;gap:.45rem;user-select:none}
+  .legend-bar summary::before{content:'🎨';font-size:.85rem}
+  .legend-bar summary::after{content:'▸';margin-left:auto;transition:transform var(--transition);font-size:.75rem}
+  .legend-bar details[open] summary::after{transform:rotate(90deg)}
+  .legend-chips{display:flex;flex-wrap:wrap;gap:.4rem;padding:.4rem 1rem .9rem}
+  .legend-chip{display:inline-flex;align-items:center;gap:.3rem;font-size:.74rem;padding:.22rem .55rem;border-radius:20px;font-weight:500;border:1px solid var(--border);background:var(--bg)}
+  .legend-chip .dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+  .programme{max-width:var(--page-max);margin:0 auto;padding:.75rem 1.25rem 4rem}
+
+  .year-section{margin-bottom:.85rem;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--bg-card);box-shadow:var(--shadow-card)}
+  .year-header{display:flex;align-items:center;gap:.65rem;width:100%;padding:.85rem 1.15rem;background:var(--uob-blue);color:#fff;border:none;cursor:pointer;font-family:var(--ff);font-size:1.02rem;font-weight:700;text-align:left;transition:background var(--transition)}
+  .year-header:hover{background:#00497d}
+  .year-header:focus-visible{outline:3px solid var(--uob-gold);outline-offset:-3px}
+  .year-header .chevron{margin-left:auto;font-size:.85rem;transition:transform var(--transition)}
+  .year-header[aria-expanded="true"] .chevron{transform:rotate(180deg)}
+  .year-badge{background:var(--uob-gold);color:var(--uob-blue);font-size:.68rem;font-weight:700;padding:.18rem .5rem;border-radius:4px}
+  .year-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}
+  .year-body.open{max-height:8000px}
+  .year-body-inner{padding:1.15rem}
+
+  .module-group-label{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:1.3rem 0 .55rem;padding-bottom:.3rem;border-bottom:2px solid var(--border)}
+  .module-group-label:first-child{margin-top:0}
+
+  /* ── SEMESTER TWO-COL LAYOUT ── */
+  .semester-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:.5rem}
+  .sem-col{}
+  .sem-col:first-child{border-right:1px solid var(--border)}
+  .sem-col-header{background:#f0f2f5;padding:.45rem .75rem;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);border-bottom:1px solid var(--border);text-align:center}
+  .sem-col-body{padding:.6rem;display:flex;flex-direction:column;gap:.55rem;min-height:60px}
+
+  .full-year-row{grid-column:1/-1;border-top:1px solid var(--border)}
+  .full-year-header{background:#eef0f4;padding:.35rem .75rem;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);border-bottom:1px solid var(--border);text-align:center}
+  .full-year-body{padding:.6rem;display:flex;flex-wrap:wrap;gap:.55rem}
+  .full-year-body .module-card{flex:1 1 250px;max-width:100%}
+
+  .summer-row{grid-column:1/-1;border-top:1px dashed #d6cdb4}
+  .summer-header{background:#faf6ee;padding:.3rem .75rem;font-size:.7rem;font-weight:600;letter-spacing:.04em;color:#9a7c3f;border-bottom:1px solid #ede4d0;text-align:center;font-style:italic}
+  .summer-body{padding:.5rem .6rem;background:#fdfbf7;display:flex;flex-wrap:wrap;gap:.55rem}
+  .summer-body .module-card{flex:1 1 250px;max-width:100%;opacity:.85}
+
+  /* ── MODULE CARDS ── */
+  .module-card{position:relative;border-radius:var(--radius-sm);padding:.7rem .85rem;cursor:pointer;transition:transform var(--transition),box-shadow var(--transition);border:1.5px solid transparent;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;min-height:68px}
+  .module-card:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.1)}
+  .module-card:focus-visible{outline:3px solid var(--uob-blue);outline-offset:2px}
+  .module-card .card-title{font-size:.82rem;font-weight:700;line-height:1.3;margin-bottom:.35rem}
+  .module-card .card-meta{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center;font-size:.68rem;font-weight:600}
+  .module-card .card-meta span{background:rgba(255,255,255,.55);padding:.12rem .35rem;border-radius:3px}
+  .module-card .click-hint{position:absolute;top:.45rem;right:.5rem;font-size:.65rem;opacity:0;transition:opacity var(--transition);padding:.08rem .3rem;border-radius:3px;background:rgba(0,0,0,.08)}
+  .module-card:hover .click-hint{opacity:1}
+
+  .pathway-panel{margin-top:.85rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
+  .pathway-title{padding:.6rem .9rem;font-size:.85rem;font-weight:700;background:#f0f2f5;border-bottom:1px solid var(--border);color:var(--uob-blue)}
+  .pathway-body{padding:0}
+  .pathway-body .semester-grid{border:none;border-radius:0;margin-bottom:0}
+
+  /* ── MODAL ── */
+  .modal-overlay{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.38);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .22s ease}
+  .modal-overlay.visible{opacity:1;pointer-events:auto}
+  .modal{background:var(--bg-card);border-radius:var(--radius);box-shadow:var(--shadow-modal);width:100%;max-width:700px;max-height:85vh;display:flex;flex-direction:column;transform:translateY(16px) scale(.97);transition:transform .28s cubic-bezier(.4,0,.2,1);overflow:hidden}
+  .modal-overlay.visible .modal{transform:translateY(0) scale(1)}
+  .modal-stripe{height:5px;flex-shrink:0}
+  .modal-header{padding:1.1rem 1.4rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:.85rem;flex-shrink:0}
+  .modal-header-text{flex:1}
+  .modal-header h2{font-size:1.12rem;font-weight:700;line-height:1.3}
+  .modal-header .modal-sub{font-size:.8rem;color:var(--text-muted);margin-top:.25rem;display:flex;flex-wrap:wrap;gap:.25rem;align-items:center}
+  .modal-close{flex-shrink:0;width:32px;height:32px;border-radius:50%;border:none;background:var(--bg);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background var(--transition);color:var(--text-muted)}
+  .modal-close:hover{background:var(--border)}
+  .modal-body{padding:1.1rem 1.4rem;overflow-y:auto;flex:1}
+  .modal-body h3{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin-top:1.3rem;margin-bottom:.4rem;padding-bottom:.25rem;border-bottom:2px solid var(--border)}
+  .modal-body h3:first-child{margin-top:0}
+  .modal-body p{font-size:.87rem;margin-bottom:.5rem}
+  .modal-body ol{padding-left:1.3rem;margin-bottom:.5rem}
+  .modal-body li{font-size:.85rem;margin-bottom:.3rem;line-height:1.5}
+  .assessment-table{width:100%;border-collapse:collapse;margin:.4rem 0 .5rem;font-size:.82rem}
+  .assessment-table th{background:var(--bg);text-align:left;padding:.4rem .55rem;font-weight:700;border-bottom:2px solid var(--border);font-size:.74rem;text-transform:uppercase;letter-spacing:.03em;color:var(--text-muted)}
+  .assessment-table td{padding:.35rem .55rem;border-bottom:1px solid var(--border)}
+  .assessment-table tr:last-child td{border-bottom:none}
+  .modal-tag{display:inline-block;font-size:.7rem;font-weight:600;padding:.18rem .45rem;border-radius:4px}
+
+  .site-footer{text-align:center;padding:1.2rem;font-size:.75rem;color:var(--text-muted);border-top:1px solid var(--border);background:var(--bg-card)}
+
+  @media(max-width:680px){
+    .semester-grid{grid-template-columns:1fr}
+    .sem-col:first-child{border-right:none;border-bottom:1px solid var(--border)}
+    .modal{max-height:92vh}
+    .year-header{font-size:.95rem}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1>Civil Engineering — Undergraduate Programme</h1>
+  <p>University of Birmingham · School of Engineering · 4-Year Curriculum Map</p>
+</header>
+
+<div class="legend-bar">
+  <details>
+    <summary>Colour Legend — Module Themes</summary>
+    <div class="legend-chips">
+      <span class="legend-chip"><span class="dot" style="background:var(--clr-structures)"></span>Structures</span>
+      <span class="legend-chip"><span class="dot" style="background:var(--clr-fluids)"></span>Fluids / Environmental</span>
+      <span class="legend-chip"><span class="dot" style="background:var(--clr-geotech)"></span>Geotechnical</span>
+      <span class="legend-chip"><span class="dot" style="background:var(--clr-design)"></span>Design Projects</span>
+      <span class="legend-chip"><span class="dot" style="background:var(--clr-maths)"></span>Maths / Construction</span>
+      <span class="legend-chip"><span class="dot" style="background:var(--clr-electrical)"></span>Electrical / Computing</span>
+      <span class="legend-chip"><span class="dot" style="background:var(--clr-materials)"></span>Materials</span>
+      <span class="legend-chip"><span class="dot" style="background:var(--clr-transport)"></span>Transport</span>
+      <span class="legend-chip"><span class="dot" style="background:var(--clr-industrial)"></span>Industrial Placement</span>
+      <span class="legend-chip"><span class="dot" style="background:var(--clr-climate)"></span>Climate / GIS</span>
+      <span class="legend-chip"><span class="dot" style="background:var(--clr-wind)"></span>Wind Engineering</span>
+      <span class="legend-chip"><span class="dot" style="background:var(--clr-railway)"></span>Railway</span>
+      <span class="legend-chip"><span class="dot" style="background:var(--clr-tunnel)"></span>Tunnelling</span>
+      <span class="legend-chip"><span class="dot" style="background:var(--clr-project)"></span>BEng / MEng Project</span>
+      <span class="legend-chip"><span class="dot" style="background:var(--clr-ai)"></span>AI / Data Science</span>
+    </div>
+  </details>
+</div>
+
+<main class="programme" id="programme"></main>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-stripe" id="modalStripe"></div>
+    <div class="modal-header">
+      <div class="modal-header-text">
+        <h2 id="modalTitle"></h2>
+        <div class="modal-sub" id="modalSub"></div>
+      </div>
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  University of Birmingham · Civil Engineering Department · Programme prepared for curriculum review and JBM 2026 accreditation · Click any module for full details
+</footer>
+
+<script>
+const TH={
+structures:{bg:'var(--clr-structures)',text:'var(--clr-structures-text)',bdr:'var(--clr-structures-bdr)',dark:'#c0392b'},
+fluids:{bg:'var(--clr-fluids)',text:'var(--clr-fluids-text)',bdr:'var(--clr-fluids-bdr)',dark:'#0097a7'},
+geotech:{bg:'var(--clr-geotech)',text:'var(--clr-geotech-text)',bdr:'var(--clr-geotech-bdr)',dark:'#e67e22'},
+design:{bg:'var(--clr-design)',text:'var(--clr-design-text)',bdr:'var(--clr-design-bdr)',dark:'#d4a017'},
+maths:{bg:'var(--clr-maths)',text:'var(--clr-maths-text)',bdr:'var(--clr-maths-bdr)',dark:'#2e7d32'},
+electrical:{bg:'var(--clr-electrical)',text:'var(--clr-electrical-text)',bdr:'var(--clr-electrical-bdr)',dark:'#1565c0'},
+materials:{bg:'var(--clr-materials)',text:'var(--clr-materials-text)',bdr:'var(--clr-materials-bdr)',dark:'#5c6bc0'},
+industrial:{bg:'var(--clr-industrial)',text:'var(--clr-industrial-text)',bdr:'var(--clr-industrial-bdr)',dark:'#c2185b'},
+transport:{bg:'var(--clr-transport)',text:'var(--clr-transport-text)',bdr:'var(--clr-transport-bdr)',dark:'#7b1fa2'},
+wind:{bg:'var(--clr-wind)',text:'var(--clr-wind-text)',bdr:'var(--clr-wind-bdr)',dark:'#6a1b9a'},
+tunnel:{bg:'var(--clr-tunnel)',text:'var(--clr-tunnel-text)',bdr:'var(--clr-tunnel-bdr)',dark:'#c62828'},
+railway:{bg:'var(--clr-railway)',text:'var(--clr-railway-text)',bdr:'var(--clr-railway-bdr)',dark:'#bf360c'},
+climate:{bg:'var(--clr-climate)',text:'var(--clr-climate-text)',bdr:'var(--clr-climate-bdr)',dark:'#00796b'},
+project:{bg:'var(--clr-project)',text:'var(--clr-project-text)',bdr:'var(--clr-project-bdr)',dark:'#455a64'},
+ai:{bg:'var(--clr-ai)',text:'var(--clr-ai-text)',bdr:'var(--clr-ai-bdr)',dark:'#00838f'},
+surveying:{bg:'var(--clr-surveying)',text:'var(--clr-surveying-text)',bdr:'var(--clr-surveying-bdr)',dark:'#78909c'}
+};
+
+const M=[
+// ─── YEAR 1 ───
+{id:"mech1",year:1,sem:"1",title:"Mechanics 1",code:"28608",credits:20,level:"LC",lead:"Dr Daniel Espino",dept:"Mechanical Engineering",theme:"structures",
+synopsis:"This module enhances students' knowledge of the principles of mechanics and associated essential mathematics, showing how they can be used to solve engineering problems. It is a broad, foundational module serving all engineering disciplines in Year 1.\n\nKey topics include vectors and kinematics; Newton's laws, momentum, and force; work, power, and energy; centre of mass; circular motion, torque, and moment of inertia; conditions for equilibrium; stress, strain, elastic moduli, and strain energy; introduction to torsion and bending; section analysis; statically determinate and indeterminate structures; truss analysis; beam analysis.",
+los:["Demonstrate knowledge and understanding of principles of mechanics and methodology necessary to underpin their education in mechanics.","Demonstrate knowledge and understanding of principles of mechanics, including calculations, to apply mathematical methods, tools and notations proficiently."],
+assessment:[{c:"Laboratory work",w:"20%",f:"Assessment of laboratory work"},{c:"In-semester assessment",w:"40%",f:"2-hour timed online assessment (Canvas quiz)"},{c:"Examination",w:"40%",f:"2-hour written unseen exam, Main Summer period"}],
+contact:"20 hrs lecture, 20 hrs tutorial, 12 hrs practical, 148 hrs independent study (200 hrs total)"},
+
+{id:"emath1",year:1,sem:"1",title:"Engineering Mathematics 1",code:"27887",credits:20,level:"LC",lead:"Dr Edward Tarte",dept:"Mechanical Engineering",theme:"maths",
+synopsis:"This module enhances student knowledge and understanding of the mathematics used in engineering. It provides the essential mathematical foundation underpinning all subsequent engineering modules.\n\nKey topics: exponentials, logarithms, and hyperbolic functions; trigonometry; differentiation; integration; Taylor's and Maclaurin's series; vector algebra; complex numbers; ordinary differential equations; matrices and determinants; numerical methods.",
+los:["Demonstrate knowledge and understanding of mathematical principles necessary to underpin their education across engineering disciplines.","Apply mathematical methods, tools and notations proficiently in the analysis and solution of engineering problems."],
+assessment:[{c:"In-semester assessment",w:"30%",f:"In-semester assessment"},{c:"Examination",w:"70%",f:"Centrally timetabled exam, January period"}],
+contact:"22 hrs lecture, 22 hrs tutorial, 156 hrs independent study (200 hrs total)"},
+
+{id:"idp1a",year:1,sem:"1",title:"Integrated Design Project 1A",code:"33283",credits:10,level:"LC",lead:"Amir Hajiyavand",dept:"Civil Engineering",theme:"design",
+synopsis:"This module introduces students to the design process within an engineering context, with three core elements:\n\n• Professional Skills: report writing, literature searching, presentation skills, team working.\n• Design Process: product design specification, concept design, selection and detail design.\n• Drawing: sketching, engineering drawings, computer-aided design.",
+los:["Apply quantitative methods and computer software to solve engineering problems.","Use creativity to establish innovative solutions.","Manage the design process and evaluate outcomes.","Apply laboratory/workshop skills.","Understand the use of technical literature and other information sources.","Understand appropriate codes of practice and industry standards.","Work in teams made up from different engineering disciplines.","Demonstrate a broad awareness of engineering projects as a system."],
+assessment:[{c:"Coursework",w:"100%",f:"100% coursework — each component must be passed individually"}],
+contact:"10 hrs lecture, 26 hrs tutorial, 24 hrs practical, 40 hrs independent study (100 hrs total)"},
+
+{id:"comp1",year:1,sem:"1",title:"Introduction to Computing for Engineers",code:"28607",credits:10,level:"LC",lead:"Dr S Pammu",dept:"Elec, Elec & Sys Engineering",theme:"electrical",
+synopsis:"This module introduces engineers to computers and computer programming using the C programming language.\n\nKey topics: variables, data types, operators; program control (loops, if/else, switch); arrays; functions and procedural programming; numerical methods and algorithms; file I/O; pointers and dynamic memory allocation; real-world applications including structs and embedded systems.",
+los:["Write programmes in C to help solve problems in engineering.","Interpret and enhance programmes developed by other engineers.","Extract and reformulate real-world scenarios into C programming code."],
+assessment:[{c:"Laboratory examinations",w:"50%",f:"Assessed laboratory examinations"},{c:"Examination",w:"50%",f:"2-hour written examination, January period"}],
+contact:"10 hrs lecture, 16 hrs practical, 74 hrs independent study (100 hrs total)"},
+
+{id:"fmet",year:1,sem:"2",title:"Fluid Mechanics and Energy Transfer",code:"28606",credits:20,level:"LC",lead:"Mike Jesson",dept:"Mechanical Engineering",theme:"fluids",
+synopsis:"This module covers the fundamentals of fluid mechanics and energy conservation.\n\nFluid Mechanics: hydrostatics; hydrodynamics; flow measurement; forces on pipe bends; steady pipe flow (Bernoulli, Moody diagram); dimensional analysis.\n\nEnergy Conservation: conduction (Fourier's Law); convection and boundary layers; radiation; First Law (heat engines, Carnot cycle); Second Law (entropy).",
+los:["Demonstrate knowledge and understanding of fluid mechanics principles.","Demonstrate knowledge and understanding of energy transfer principles and apply mathematical methods proficiently."],
+assessment:[{c:"Laboratory work",w:"20%",f:"Best 4 lab reports at 5% each"},{c:"In-semester assessment",w:"40%",f:"Timed online Canvas quiz"},{c:"Examination",w:"40%",f:"3-hour closed-book exam, Main Summer"}],
+contact:"22 hrs lecture, 22 hrs tutorial, 10 hrs practical, 146 hrs independent study (200 hrs total)"},
+
+{id:"emat",year:1,sem:"2",title:"Engineering Materials",code:"28605",credits:10,level:"LC",lead:"Dr Sam Cruchley",dept:"Metallurgy and Materials",theme:"materials",
+synopsis:"This module introduces the range of materials and their key properties used in engineering, enabling students to select appropriate materials for a given application. It introduces the fundamental science determining electrical or mechanical properties and software for modelling material properties.",
+los:["Explain how macroscopic properties of materials are determined by microscopic and atomic structure.","Choose suitable materials for a well-defined engineering application.","Use technical computing software to model properties and analyse experiments."],
+assessment:[{c:"MCQs",w:"20%",f:"Multiple-choice questions"},{c:"Matlab class test",w:"20%",f:"Matlab class test"},{c:"Examination",w:"60%",f:"Closed-book 2-hour examination, Main Summer"}],
+contact:"22 hrs lecture, 3 hrs tutorial, 15 hrs practical, 60 hrs independent study (100 hrs total)"},
+
+{id:"elec1",year:1,sem:"2",title:"Electrical Engineering 1",code:"28604",credits:20,level:"LC",lead:"Dr Tim Jackson",dept:"Elec, Elec & Sys Engineering",theme:"electrical",
+synopsis:"Covers the fundamentals of electronic and electrical engineering:\n\nAnalogue Circuits: circuit variables, impedance, Kirchhoff's laws, Thévenin's and Norton's theorems, resonance.\n\nDigital Systems: binary numbers, logic gates, Boolean algebra, Karnaugh maps, flip-flops, counters.\n\nElectrical Power and Machines: magnetic circuits, DC machines, reactive power, rectifiers, three-phase systems.",
+los:["Explain the physical laws and design rules for analogue and digital circuits and electrical machines.","Solve problems involving the analysis and design of circuits and machines."],
+assessment:[{c:"Canvas assessment",w:"30%",f:"Weekly Canvas-based quizzes"},{c:"Laboratory data",w:"20%",f:"Collected weekly"},{c:"Examination",w:"50%",f:"Multiple-choice timed examination, Main Summer"}],
+contact:"24 hrs lecture, 20 hrs practical, 156 hrs independent study (200 hrs total)"},
+
+{id:"idp1b",year:1,sem:"2",title:"Integrated Design Project 1B",code:"33282",credits:10,level:"LC",lead:"Prof Duncan Shepherd",dept:"Civil Engineering",theme:"design",
+synopsis:"Continues from IDP 1A through hands-on design-build-test activities and a more extensive team design project.\n\nKey elements: design, build and test project; intellectual property and ethics; team design project; discipline-specific training; site visits.",
+los:["Apply quantitative methods and computer software to solve engineering problems.","Use creativity to establish innovative solutions.","Manage the design process and evaluate outcomes.","Apply laboratory and discipline-related skills.","Understand technical literature and information sources.","Demonstrate awareness of intellectual property, contractual and ethical issues.","Understand appropriate codes of practice and industry standards.","Work in cross-disciplinary teams.","Demonstrate a broad awareness of engineering projects as a system."],
+assessment:[{c:"Coursework",w:"100%",f:"100% coursework"}],
+contact:"10 hrs lecture, 18 hrs tutorial, 4 hrs practical, 68 hrs independent study (100 hrs total)"},
+
+{id:"surv",year:1,sem:"2",title:"Surveying",code:"—",credits:0,level:"LC",lead:"—",dept:"Civil Engineering",theme:"surveying",
+synopsis:"Surveying (0 credits) appears in the programme structure but no module specification was provided. It may be embedded within another module (e.g. Big Brum Build) or delivered as a non-credit-bearing activity.",
+los:["Details not available — module specification not provided."],
+assessment:[{c:"N/A",w:"—",f:"Non-credit-bearing activity"}],
+contact:"Not specified"},
+
+// ─── YEAR 2 ───
+{id:"mos",year:2,sem:"1",title:"Mechanics of Structures",code:"29654",credits:20,level:"LI",lead:"Marios Theofanous",dept:"Civil Engineering",theme:"structures",
+synopsis:"Covers theory and design of structures, building on Year 1 Mechanics.\n\nTheory: 2-D stresses and Mohr's circle; yield and failure criteria; St Venant's principle; buckling; plastic collapse; energy methods; moment distribution; arches; cables.\n\nDesign: limit state design; steel design (beams, columns to EC3); reinforced concrete design (flexure, shear, columns to EC2).",
+los:["Analyse a structural element under multi-axial stress.","Calculate the load capacity of columns or struts.","Explain limit state design.","Design steel beams and columns to EC3.","Design a reinforced concrete beam or column to EC2.","Use moment distribution for continuous beams.","Analyse three-pinned arches.","Calculate strain energy and use energy methods.","Apply plastic method of analysis.","Explain shear centre.","Analyse cables.","Explain St Venant's principle.","Apply yield and failure criteria to complex stress states."],
+assessment:[{c:"Coursework",w:"40%",f:"Coursework"},{c:"Examination",w:"60%",f:"3-hour written unseen exam, January period"}],
+contact:"44 hrs lecture, 20 hrs tutorial, 6 hrs supervised lab, 130 hrs independent study (200 hrs total)"},
+
+{id:"efm",year:2,sem:"1",title:"Environmental (Env) Fluid Mechanics",code:"TBC (new)",credits:20,level:"LI",lead:"Soroosh Sharifi",dept:"Civil Engineering",theme:"fluids",
+synopsis:"A new module consolidating and modernising content from two previous 10-credit modules.\n\nKey topics: open channel flow (Manning's equation, hydraulic jumps, gradually varied flow, Froude number); conceptual basis of Navier–Stokes equations; numerical methods (finite differences, turbulence modelling); pipe flow and sewer systems; laboratory experiments; computer practicals.\n\nSDG embedding: SDG 6, SDG 11, SDG 13.",
+los:["Apply conservation principles to analyse open channel flows.","Describe the conceptual basis of the Navier–Stokes equations and apply basic numerical methods.","Analyse pipe flow and sewer systems for water infrastructure design.","Conduct and report on laboratory experiments.","Evaluate environmental, economic, and societal risks of hydraulic engineering works."],
+assessment:[{c:"Examination",w:"50%",f:"2-hour closed-book written paper (Type A)"},{c:"Computational modelling CW",w:"30%",f:"Individual modelling report (Type B)"},{c:"Laboratory report",w:"20%",f:"Individual report from two lab sessions (Type C)"}],
+contact:"33 hrs lecture, 6 hrs tutorial, 11 hrs practical, 12 hrs supervised lab, 144 hrs independent study (200 hrs total)"},
+
+{id:"cpdm",year:2,sem:"1",title:"Construction Practice and Digital Modelling",code:"29649",credits:20,level:"LI",lead:"Prof Kamel Hawwash",dept:"Civil Engineering",theme:"maths",
+synopsis:"Introduces key aspects of modern construction management, health and safety, and BIM.\n\nKey topics: construction management (planning, contract documentation); health and safety (hazard, risk, CDM); BIM and computer-aided drafting.\n\nExpanded from 10 to 20 credits with design and build week, AutoCAD, and BIM.",
+los:["Describe H&S law and identify key legislation.","Describe duties under CDM.","List key elements of a H&S management system.","Describe roles and activities in construction projects.","Identify construction site hazards and control measures.","Produce a method statement.","Demonstrate knowledge of contract documentation.","Understand planning techniques.","Demonstrate the role of BIM modelling."],
+assessment:[{c:"Class test",w:"70%",f:"Closed-book class test or Canvas assessment"},{c:"BIM coursework",w:"30%",f:"Group BIM coursework — poster and video"}],
+contact:"22 hrs lecture, 10 hrs tutorial, 68 hrs independent study (existing 10-credit spec)"},
+
+{id:"soil",year:2,sem:"2",title:"Soil Mechanics",code:"TBC (new)",credits:20,level:"LI",lead:"TBC",dept:"Civil Engineering",theme:"geotech",
+synopsis:"Replaces existing Geotechnical Engineering 1. Introduces engineering aspects and properties of the ground.\n\nKey topics: engineering geology, soil formation, classification; chemico-physical behaviour; stresses; effective stress and pore water pressure; volume change; groundwater and seepage; compaction; shear strength (Mohr–Coulomb); laboratory techniques.",
+los:["Explain geotechnical properties of soils and rocks.","Assess the role of effective stress on soil behaviour.","Explain seepage and its effects.","Identify volume changes using prediction and laboratory measurements.","Estimate soil response to shear stresses."],
+assessment:[{c:"TBC",w:"TBC",f:"Assessment to be confirmed"}],
+contact:"50 hrs lecture, 13 hrs tutorial, 8 hrs supervised lab, 129 hrs independent study (200 hrs total)"},
+
+{id:"cemat",year:2,sem:"2",title:"Civil Engineering Materials",code:"29653/29647",credits:20,level:"LI",lead:"Jelena Ninic / Dexter Hunt",dept:"Civil Engineering",theme:"materials",
+synopsis:"Building on Year 1 Engineering Materials. Five core materials: concrete, steel, masonry, timber, bituminous mixtures. CEN standards and sustainability throughout. CES EduPack software.\n\nIncludes concrete deterioration, timber design, and bituminous mixture design.",
+los:["Discuss main properties of concrete, steel, and masonry.","Describe specification and testing for compliance.","Discuss durability and protective measures.","Perform concrete mix design.","Describe durability mechanisms.","Describe materials use for sustainability.","Apply knowledge in group projects.","Use CES EduPack.","Discuss timber and bituminous materials.","Evaluate materials for cost, environment, and sustainability."],
+assessment:[{c:"Coursework (combined)",w:"100%",f:"Open-book coursework and group project — no exam (JBM concern)"}],
+contact:"88 hrs lecture, 20 hrs tutorial, 36 hrs practical/lab (combined from predecessor modules)"},
+
+{id:"idp2",year:2,sem:"2",title:"Integrated Design Project 2",code:"29652",credits:20,level:"LI",lead:"Dr Neil Cooke",dept:"Civil Engineering",theme:"design",
+synopsis:"Cross-disciplinary team design challenges with teams from Civil, Mechanical, and EESE cohorts.\n\nCross-disciplinary: systems engineering; project planning; H&S; sustainability; risk management.\n\nCivil-specific: structural design of indeterminate structures; moment distribution; forensic engineering.",
+los:["Demonstrate key skills for integrated design projects.","Describe key issues in team working.","Explain hazard and risk concepts.","Appraise the engineer's role considering sustainability and ethics.","Demonstrate awareness as global citizens.","Design and solve complex cross-disciplinary projects.","Undertake reflection and critical analysis.","Present and defend design concepts."],
+assessment:[{c:"Concept design report and presentation",w:"50%",f:"Group coursework"},{c:"Discipline-specific report and presentation",w:"50%",f:"Group coursework"}],
+contact:"24 hrs lecture, 30 hrs practical, 146 hrs independent study (200 hrs total)"},
+
+// ─── YEAR 3 ───
+{id:"sad",year:3,sem:"1",title:"Structural Analysis and Design",code:"28468",credits:20,level:"LH",lead:"Pedro Vazquez-Martinez",dept:"Civil Engineering",theme:"structures",group:"core",
+synopsis:"Two main parts — Structural Design and Structural Analysis.\n\nDesign: steelwork connections; steel columns; RC serviceability; composite beams; timber beams; masonry.\n\nAnalysis: matrix displacement methods; FEA models for trusses and frames; FEA software.",
+los:["Design and assess connections and steel columns.","Assess RC sections at serviceability.","Design RC columns at ULS.","Design composite beams.","Design timber beams.","Design masonry.","Analyse structures using matrix displacement and FEA.","Conduct and interpret FEA results."],
+assessment:[{c:"Coursework",w:"50%",f:"Coursework"},{c:"Examination",w:"50%",f:"Exam, January period"}],
+contact:"40 hrs lecture, 2 hrs seminar, 20 hrs tutorial, 3 hrs supervised lab, 134 hrs independent study (200 hrs total)"},
+
+{id:"wed",year:3,sem:"1",title:"Water Engineering (Eng) and Design",code:"TBC (new)",credits:20,level:"LH",lead:"Xilin Xia",dept:"Civil Engineering",theme:"fluids",group:"core",
+synopsis:"New core module: integrated, design-led treatment of water engineering — hydrology, urban drainage including SuDS, pipe and open-channel design, flood resilience, water/wastewater treatment, modelling software.\n\nSDG embedding: SDG 6, SDG 9, SDG 11, SDG 13.",
+los:["Apply principles of hydrology, drainage, conveyance, and treatment.","Analyse rainfall–runoff behaviour and flood design inputs.","Design pipe networks, open channels, and SuDS components.","Select water and wastewater treatment processes.","Apply modelling software for design solutions."],
+assessment:[{c:"Examination",w:"50%",f:"Centrally timetabled exam"},{c:"Coursework",w:"50%",f:"Integrated water engineering coursework"}],
+contact:"40 hrs lecture, 20 hrs tutorial, 16 hrs supervised lab, 124 hrs independent study (200 hrs total)"},
+
+{id:"tsed",year:3,sem:"1",title:"Transport Systems Eng and Design",code:"TBC (new)",credits:20,level:"LH",lead:"TBC",dept:"Civil Engineering",theme:"transport",group:"core",
+synopsis:"Addresses JBM requirement for highways and transportation fundamentals.\n\nKey areas: transport system design; highway engineering; railway engineering; active travel; transport planning.\n\nNote: Learning outcomes not yet specified.",
+los:["Learning outcomes to be confirmed — maps to AHEP outcomes C1, C2, C4, C5, C6, C7, C10, C11, C17."],
+assessment:[{c:"Transport Systems Design Assignment",w:"100%",f:"Report (80%) and viva (20%) — 100% CW, JBM concern"}],
+contact:"c. 40 hrs contact time"},
+
+{id:"gad",year:3,sem:"2",title:"Geotechnical Analysis and Design",code:"TBC (new)",credits:20,level:"LH",lead:"TBC",dept:"Civil Engineering",theme:"geotech",group:"core",
+synopsis:"Replaces Geotechnical Engineering 2. Practical application of soil mechanics.\n\nTopics: ground investigations; hazardous ground; foundations; drained/undrained conditions; piles; retaining structures; slope stability.",
+los:["Understand ground investigations.","Identify hazardous ground conditions.","Apply soil mechanics to geotechnical engineering.","Identify pile types.","Design shallow foundations.","Design piles.","Analyse retaining structures.","Analyse slope stability."],
+assessment:[{c:"TBC",w:"TBC",f:"Assessment to be confirmed"}],
+contact:"40 hrs lecture, 20 hrs tutorial, 2 hrs supervised lab, 138 hrs independent study (200 hrs total)"},
+
+{id:"idp3",year:3,sem:"2",title:"Integrated Design Project 3",code:"29646",credits:20,level:"LH",lead:"Hassan Hemida",dept:"Civil Engineering",theme:"design",group:"core",
+synopsis:"Team-based real-life design challenges addressing worldwide problems. Includes Formula Student Project. Enhances awareness of globalisation, climate change, sustainability.",
+los:["Demonstrate knowledge of risk and uncertainty management.","Appraise team responsibility.","Evaluate and adapt engineering practice.","Demonstrate understanding of codes of conduct.","Demonstrate knowledge of current practice.","Communicate and defend design concepts.","Demonstrate knowledge of project and business management."],
+assessment:[{c:"Coursework",w:"100%",f:"100% coursework"}],
+contact:"10 hrs practical, 10 hrs supervised lab, 180 hrs independent study (200 hrs total)"},
+
+{id:"beng",year:3,sem:"full",title:"Bachelor of Engineering (BEng) Project",code:"27091",credits:20,level:"LH",lead:"Andrew Quinn",dept:"Civil Engineering",theme:"project",group:"core",
+synopsis:"Individual research-oriented project. Critical literature review, problem definition, methodology. Findings presented in report and defended in viva.",
+los:["Obtain and evaluate information.","Plan and execute a programme of work.","Provide critical assessment.","Sort and manipulate data.","Provide clear conclusions.","Work independently.","Use appropriate communication techniques."],
+assessment:[{c:"Interim report",w:"20%",f:"Coursework — Semester 1"},{c:"Final report",w:"60%",f:"Coursework — Semester 2"},{c:"Presentation with Q&A",w:"20%",f:"Oral presentation"}],
+contact:"4 hrs lecture, 8 hrs supervision, 120 hrs supervised lab, 68 hrs independent study (200 hrs total)"},
+
+{id:"amai",year:3,sem:"2",title:"Applied Mathematics and AI for Civil Engineers",code:"TBC (new)",credits:20,level:"LH",lead:"Soroosh Sharifi",dept:"Civil Engineering",theme:"ai",group:"meng",
+synopsis:"Modernises applied mathematics with AI and data science.\n\nFirst half: linear algebra, multivariable calculus, integral transforms, probability, statistics.\n\nSecond half: data science and ML using CRISP-DM in Python.\n\nSDG embedding: SDG 9, SDG 10, SDG 11.",
+los:["Solve problems in linear algebra, calculus, probability, and statistics.","Evaluate uncertainty and variability using statistical methods.","Design and evaluate supervised ML models in Python.","Apply the CRISP-DM lifecycle.","Critically assess ethical implications of AI in civil engineering.","Communicate data-driven findings."],
+assessment:[{c:"Examination",w:"50%",f:"2-hour closed-book paper (Type A)"},{c:"AI Coursework",w:"50%",f:"Individual Python-based project (Type B)"}],
+contact:"22 hrs lecture, 11 hrs tutorial, 11 hrs practical, 156 hrs independent study (200 hrs total)"},
+
+{id:"wewe",year:3,sem:"2",title:"Wind Engineering and Wind Energy",code:"TBC (new)",credits:20,level:"LH",lead:"Hassan Hemida",dept:"Civil Engineering",theme:"wind",group:"meng",
+synopsis:"Wind engineering for onshore and offshore wind energy structures.\n\nTopics: atmospheric boundary layer; wind resource assessment; environmental loading; wind energy system design; computational tools.\n\nSDG embedding: SDG 7, SDG 9, SDG 11, SDG 13.",
+los:["Evaluate atmospheric boundary layer and wind energy potential.","Analyse loading on wind structures.","Apply advanced principles to wind turbine design.","Select and assess wind engineering tools.","Integrate resilience and climate change for wind infrastructure."],
+assessment:[{c:"Online quizzes (lecture)",w:"20%",f:"Individual"},{c:"Online quizzes (lab)",w:"30%",f:"Individual"},{c:"Group design coursework",w:"50%",f:"Group-based"}],
+contact:"40 hrs lecture, 8 hrs practical, 10 hrs supervised lab, 142 hrs independent study (200 hrs total)"},
+
+{id:"ip1",year:3,sem:"summer",title:"Industrial Project 1",code:"23633",credits:20,level:"LH",lead:"Iestyn Stead",dept:"Civil Engineering",theme:"industrial",group:"meng",
+synopsis:"Placement with a host company to apply knowledge and skills. Compulsory for 'with Industrial Experience' programmes; optional for other MEng students.",
+los:["Demonstrate enhanced technical skills.","Demonstrate transferable workplace skills.","Maintain a training record.","Present a placement report."],
+assessment:[{c:"Personal log",w:"20%",f:"Coursework"},{c:"Written report",w:"60%",f:"Coursework"},{c:"Presentation with Q&A",w:"20%",f:"Oral presentation — Autumn term"}],
+contact:"Placement-based; 200 hrs"},
+
+// ─── YEAR 4 ───
+{id:"meng",year:4,sem:"full",title:"Master of Engineering (MEng) Project",code:"31729",credits:40,level:"LM",lead:"Nan Gao & Ziyun Ding",dept:"Shared across School",theme:"project",group:"core",
+synopsis:"Opportunity to work independently on a topic in depth with a degree of originality. Consolidates material from the entire degree.",
+los:["Optimise application of technology.","Apply theoretical and practical methods.","Plan effective project implementation.","Demonstrate communication skills.","Demonstrate professional standards.","Demonstrate use of technical literature.","Provide clear recommendations.","Work independently.","Provide critical assessment."],
+assessment:[{c:"Preliminary report",w:"20%",f:"Semester 1"},{c:"Presentation with Q&A",w:"20%",f:"Semester 2"},{c:"Final report",w:"60%",f:"Semester 2"}],
+contact:"1 hr lecture, 39 hrs supervision, 360 hrs independent study (400 hrs total)"},
+
+{id:"asd",year:4,sem:"1",title:"Advanced Structural Design",code:"28465",credits:20,level:"LM",lead:"Pedro Martinez-Vazquez",dept:"Civil Engineering",theme:"structures",group:"pw",
+synopsis:"Advanced topics in composite construction and prestressed concrete.\n\nComposite construction; prestressed concrete structures; professional drawings and sketches.",
+los:["Critically evaluate and design composite members.","Critically evaluate and design prestressed concrete members.","Communicate engineering concepts using professional drawings."],
+assessment:[{c:"Coursework",w:"40%",f:"Coursework"},{c:"Examination",w:"60%",f:"3-hour written unseen exam"}],
+contact:"15 hrs lecture, 5 hrs tutorial, 180 hrs independent study (200 hrs total)"},
+
+{id:"amdt",year:4,sem:"2",title:"Advanced Material Design and Technology",code:"29659",credits:20,level:"LM",lead:"Bahman Ghiassi",dept:"Civil Engineering",theme:"materials",group:"pw",
+synopsis:"Advanced, novel, and innovative construction materials.\n\nHigh performance concrete; durability assessment and repair; surface protection; composites; CES EduPack; laboratory work.",
+los:["Assess specialist concretes and protection systems.","Assess concrete durability.","Select inspection, testing, and repair methods.","Evaluate composites.","Evaluate composite specification.","Evaluate surface protection.","Use CES EduPack.","Undertake laboratory work."],
+assessment:[{c:"Coursework",w:"50%",f:"Design and calculations file"},{c:"Examination",w:"50%",f:"2-hour written unseen exam, January"}],
+contact:"44 hrs lecture, 6 hrs tutorial, 18 hrs practical, 132 hrs independent study (200 hrs total)"},
+
+{id:"aga",year:4,sem:"1",title:"Advanced Geotechnical Analysis",code:"TBC (new)",credits:20,level:"LM",lead:"TBC",dept:"Civil Engineering",theme:"geotech",group:"pw",
+synopsis:"Critical State Soil Mechanics and computer-aided geotechnical engineering.\n\nVolumetric and deviatoric stress responses; normally consolidated vs overconsolidated soils; numerical methods; commercially available software.",
+los:["Use geotechnical design software and assess limitations.","Understand constitutive models in CAD.","Apply critical state soil mechanics."],
+assessment:[{c:"Coursework",w:"100%",f:"100% coursework — to be confirmed"}],
+contact:"20 hrs lecture, 23 hrs tutorial, 14 hrs practical, 143 hrs independent study (200 hrs total)"},
+
+{id:"tunn",year:4,sem:"2",title:"Tunnelling",code:"TBC (new)",credits:20,level:"LM",lead:"TBC",dept:"Civil Engineering",theme:"tunnel",group:"pw",
+synopsis:"Tunnelling techniques and ground–tunnel–structure interactions.\n\nMethods; ground uncertainty; construction and design; impact on built environment; digitalisation (BIM, AI).",
+los:["Differentiate tunnelling methods.","Understand ground uncertainty.","Assess construction methods.","Evaluate impact on built environment.","Understand digitalisation in tunnelling."],
+assessment:[{c:"Coursework",w:"100%",f:"100% coursework — to be confirmed"}],
+contact:"40 hrs lecture, 20 hrs tutorial, 140 hrs independent study (200 hrs total)"},
+
+{id:"atre",year:4,sem:"1",title:"Advanced Topics in Railway Engineering",code:"34507",credits:20,level:"LM",lead:"Holly Foss",dept:"Civil Engineering",theme:"railway",group:"pw",
+synopsis:"Railways in a global context: UN SDGs, sustainability, decarbonisation, emerging technologies, digital railway.",
+los:["Assess global railway issues and SDG alignment.","Describe modelling and data analysis for railways.","Use railway modelling software.","Propose methods for railway enhancement.","Describe digitisation in railways."],
+assessment:[{c:"Written report",w:"50%",f:"3,000-word report"},{c:"Modelling project",w:"50%",f:"Modelling project"}],
+contact:"16 hrs lecture, 16 hrs practical, 168 hrs independent study (200 hrs total)"},
+
+{id:"aefm",year:4,sem:"1",title:"Applied Environmental Fluid Mechanics",code:"TBC (new)",credits:20,level:"LM",lead:"Bruño Fraga",dept:"Civil Engineering",theme:"fluids",group:"pw",
+synopsis:"Advanced environmental flows. CFD (finite-volume, turbulence, mesh generation); fluid–structure interaction; flow stability; machine learning in fluids.\n\nSDG embedding: SDG 7, SDG 9, SDG 11, SDG 13.",
+los:["Understand modelling and experimental techniques.","Assess modelling results.","Choose appropriate modelling techniques.","Understand ML in fluids.","Understand fluid–structure coupling.","Develop model-based designs.","Develop team-working skills.","Engage with sustainability research."],
+assessment:[{c:"Coursework",w:"100%",f:"4,000-word report — 100% CW"}],
+contact:"20 hrs lecture, 20 hrs supervision, 15 hrs practical, 5 hrs lab, 140 hrs independent study (200 hrs total)"},
+
+{id:"crigis",year:4,sem:"2",title:"Climate Resilient Infrastructure and GIS",code:"TBC (new)",credits:20,level:"LM",lead:"Emma Ferranti",dept:"Civil Engineering",theme:"climate",group:"pw",
+synopsis:"Climate risk assessment, adaptation strategies, climate-resilient design, nature-based solutions. GIS using QGIS.\n\nStrongest module for JBM alignment.\n\nSDG embedding: SDG 9, SDG 11, SDG 13, SDG 15.",
+los:["Evaluate multi-hazard risk assessment approaches.","Analyse climate vulnerability and adaptation strategies.","Apply climate-resilient design principles.","Evaluate green infrastructure and NBS.","Apply GIS for hazard mapping and planning."],
+assessment:[{c:"Examination",w:"40%",f:"2-hour closed-book paper"},{c:"CW 1 — Risk assessment",w:"25%",f:"Individual GIS-supported screening"},{c:"CW 2 — Group plan",w:"35%",f:"Group report, GIS portfolio, presentation"}],
+contact:"20 hrs lecture, 15 hrs tutorial, 15 hrs practical, 150 hrs independent study (200 hrs total)"},
+
+{id:"ip2",year:4,sem:"summer",title:"Industrial Project 2",code:"23634",credits:20,level:"LM",lead:"Iestyn Stead",dept:"Civil Engineering",theme:"industrial",group:"pw",
+synopsis:"Placement building on Industrial Project 1. Business processes in national and international framework.\n\nCompulsory for 'with Industrial Experience' programmes; optional for other MEng students.",
+los:["Demonstrate enhanced technical skills.","Demonstrate transferable skills.","Maintain a training record.","Present a placement report.","Prepare a literature review."],
+assessment:[{c:"Personal log",w:"20%",f:"Coursework"},{c:"Written report",w:"60%",f:"Coursework"},{c:"Presentation with Q&A",w:"20%",f:"Oral presentation — Autumn term"}],
+contact:"Placement-based; 200 hrs"}
+];
+
+const PATHWAYS=[
+{name:"Pathway 1 — Civil and Ground Engineering",sem1:["asd","aga"],sem2:["amdt","tunn"],summer:["ip2"]},
+{name:"Pathway 2 — Climate Resilience and Environmental Systems",sem1:["aefm","aga"],sem2:["crigis","amdt"],summer:["ip2"]},
+{name:"Pathway 3 — Transport Infrastructure",sem1:["atre","asd"],sem2:["tunn","crigis"],summer:["ip2"]},
+{name:"Pathway 4 — Future Infrastructure",sem1:["asd","crigis"],sem2:["amdt","aefm"],summer:["ip2"]}
+];
+
+/* ── DOM REFS ── */
+const $p=document.getElementById('programme'),
+      $ov=document.getElementById('modalOverlay'),
+      $mt=document.getElementById('modalTitle'),
+      $ms=document.getElementById('modalSub'),
+      $mb=document.getElementById('modalBody'),
+      $mst=document.getElementById('modalStripe'),
+      $mc=document.getElementById('modalClose');
+
+function find(id){return M.find(m=>m.id===id)}
+
+function card(mod){
+  const t=TH[mod.theme]||TH.materials;
+  const d=document.createElement('div');
+  d.className='module-card';d.tabIndex=0;
+  d.setAttribute('role','button');
+  d.setAttribute('aria-label',mod.title+' — '+mod.credits+' credits');
+  d.style.background=t.bg;d.style.color=t.text;d.style.borderColor=t.bdr;
+  d.innerHTML='<div class="card-title">'+mod.title+'</div><div class="card-meta"><span>'+mod.credits+' cr</span>'+(mod.level?'<span>'+mod.level+'</span>':'')+'</div><span class="click-hint">Click for details</span>';
+  d.addEventListener('click',()=>openModal(mod));
+  d.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openModal(mod)}});
+  return d;
+}
+
+function semGrid(s1,s2,fy,su){
+  const g=document.createElement('div');g.className='semester-grid';
+  const c1=document.createElement('div');c1.className='sem-col';
+  const h1=document.createElement('div');h1.className='sem-col-header';h1.textContent='Semester 1';
+  const b1=document.createElement('div');b1.className='sem-col-body';
+  s1.forEach(m=>b1.appendChild(card(m)));
+  c1.appendChild(h1);c1.appendChild(b1);
+
+  const c2=document.createElement('div');c2.className='sem-col';
+  const h2=document.createElement('div');h2.className='sem-col-header';h2.textContent='Semester 2';
+  const b2=document.createElement('div');b2.className='sem-col-body';
+  s2.forEach(m=>b2.appendChild(card(m)));
+  c2.appendChild(h2);c2.appendChild(b2);
+
+  g.appendChild(c1);g.appendChild(c2);
+
+  if(fy&&fy.length){const r=document.createElement('div');r.className='full-year-row';
+    const rh=document.createElement('div');rh.className='full-year-header';rh.textContent='Full Year (Semesters 1 & 2)';
+    const rb=document.createElement('div');rb.className='full-year-body';
+    fy.forEach(m=>rb.appendChild(card(m)));r.appendChild(rh);r.appendChild(rb);g.appendChild(r);}
+
+  if(su&&su.length){const r=document.createElement('div');r.className='summer-row';
+    const rh=document.createElement('div');rh.className='summer-header';rh.textContent='☀ Summer Placement (preceding academic year)';
+    const rb=document.createElement('div');rb.className='summer-body';
+    su.forEach(m=>rb.appendChild(card(m)));r.appendChild(rh);r.appendChild(rb);g.appendChild(r);}
+
+  return g;
+}
+
+function label(text){const d=document.createElement('div');d.className='module-group-label';d.textContent=text;return d;}
+
+const YEARS=[
+{num:1,label:"Year 1 — Foundation",credits:120,open:true},
+{num:2,label:"Year 2 — Mechanics",credits:120,open:false},
+{num:3,label:"Year 3 — Design",credits:120,open:false},
+{num:4,label:"Year 4 — Advanced Topics (MEng)",credits:120,open:false}
+];
+
+YEARS.forEach(yr=>{
+  const sec=document.createElement('section');sec.className='year-section';
+  const btn=document.createElement('button');btn.className='year-header';
+  btn.setAttribute('aria-expanded',yr.open?'true':'false');
+  btn.innerHTML='Year '+yr.num+' <span class="year-badge">'+yr.credits+' credits</span> <span style="opacity:.7;font-weight:400;font-size:.88rem">'+(yr.label.split('—')[1]||'')+'</span><span class="chevron">▾</span>';
+
+  const body=document.createElement('div');body.className='year-body'+(yr.open?' open':'');
+  const inner=document.createElement('div');inner.className='year-body-inner';
+  const yM=M.filter(m=>m.year===yr.num);
+
+  if(yr.num<=2){
+    inner.appendChild(semGrid(yM.filter(m=>m.sem==='1'),yM.filter(m=>m.sem==='2'),yM.filter(m=>m.sem==='full'),yM.filter(m=>m.sem==='summer')));
+  } else if(yr.num===3){
+    const core=yM.filter(m=>m.group==='core'),meng=yM.filter(m=>m.group==='meng');
+    inner.appendChild(label('Core Modules (BEng and MEng)'));
+    inner.appendChild(semGrid(core.filter(m=>m.sem==='1'),core.filter(m=>m.sem==='2'),core.filter(m=>m.sem==='full'),[]));
+    if(meng.length){inner.appendChild(label('MEng Options'));
+    inner.appendChild(semGrid(meng.filter(m=>m.sem==='1'),meng.filter(m=>m.sem==='2'),meng.filter(m=>m.sem==='full'),meng.filter(m=>m.sem==='summer')));}
+  } else if(yr.num===4){
+    const core=yM.filter(m=>m.group==='core');
+    inner.appendChild(label('Core Modules'));
+    inner.appendChild(semGrid(core.filter(m=>m.sem==='1'),core.filter(m=>m.sem==='2'),core.filter(m=>m.sem==='full'),[]));
+    inner.appendChild(label('Pathway Options (choose one pathway)'));
+    PATHWAYS.forEach(pw=>{
+      const panel=document.createElement('div');panel.className='pathway-panel';
+      const t=document.createElement('div');t.className='pathway-title';t.textContent=pw.name;
+      const pb=document.createElement('div');pb.className='pathway-body';
+      pb.appendChild(semGrid(pw.sem1.map(find).filter(Boolean),pw.sem2.map(find).filter(Boolean),[],pw.summer.map(find).filter(Boolean)));
+      panel.appendChild(t);panel.appendChild(pb);inner.appendChild(panel);
+    });
+  }
+
+  body.appendChild(inner);sec.appendChild(btn);sec.appendChild(body);$p.appendChild(sec);
+  btn.addEventListener('click',()=>{const o=body.classList.toggle('open');btn.setAttribute('aria-expanded',o);});
+});
+
+/* ── MODAL ── */
+function openModal(mod){
+  const t=TH[mod.theme]||TH.materials;
+  $mst.style.background=t.dark;
+  $mt.textContent=mod.title;
+  const sl=mod.sem==='full'?'Full Year':mod.sem==='summer'?'Summer Placement':'Semester '+mod.sem;
+  $ms.innerHTML=(mod.code!=='—'?'<span class="modal-tag" style="background:#eee;color:#333">'+mod.code+'</span>':'')+
+    '<span class="modal-tag" style="background:#eee;color:#333">'+mod.credits+' credits</span>'+
+    '<span class="modal-tag" style="background:#eee;color:#333">Level '+mod.level+'</span>'+
+    '<span class="modal-tag" style="background:#eee;color:#333">'+sl+'</span>'+
+    (mod.lead!=='—'?'<br><span style="font-size:.78rem;color:#666">Module Lead: '+mod.lead+' · '+mod.dept+'</span>':'');
+  let h='<h3>Synopsis</h3>';
+  h+=mod.synopsis.split('\n').map(p=>p.trim()?'<p>'+p+'</p>':'').join('');
+  h+='<h3>Learning Outcomes</h3><ol>';
+  mod.los.forEach(l=>{h+='<li>'+l+'</li>';});
+  h+='</ol><h3>Assessment</h3><table class="assessment-table"><thead><tr><th>Component</th><th>Weight</th><th>Format</th></tr></thead><tbody>';
+  mod.assessment.forEach(a=>{h+='<tr><td>'+a.c+'</td><td>'+a.w+'</td><td>'+a.f+'</td></tr>';});
+  h+='</tbody></table>';
+  if(mod.contact)h+='<p style="font-size:.8rem;color:var(--text-muted);margin-top:.7rem"><strong>Contact hours:</strong> '+mod.contact+'</p>';
+  $mb.innerHTML=h;
+  $ov.classList.add('visible');$mc.focus();document.body.style.overflow='hidden';
+}
+function closeModal(){$ov.classList.remove('visible');document.body.style.overflow='';}
+$mc.addEventListener('click',closeModal);
+$ov.addEventListener('click',e=>{if(e.target===$ov)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+</script>
+</body>
+</html>
